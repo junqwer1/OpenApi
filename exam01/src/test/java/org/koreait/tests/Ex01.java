@@ -83,14 +83,16 @@ public class Ex01 {
     @Test
     void test4() {
         String url = "https://jsonplaceholder.typicode.com/posts/1";
-        String body = restTemplate.getForObject(URI.create(url), String.class); // 응답 바디
+//        String body = restTemplate.getForObject(URI.create(url), String.class); // 응답 바디
+        Post body = restTemplate.getForObject(URI.create(url), Post.class);
         System.out.println(body);
     }
 
     @Test
     void test5() {
         String url = "https://jsonplaceholder.typicode.com/posts/1";
-        ResponseEntity<String> response = restTemplate.getForEntity(URI.create(url), String.class); // 응답 헤더, 바디
+//        ResponseEntity<String> response = restTemplate.getForEntity(URI.create(url), String.class); // 응답 헤더, 바디
+        ResponseEntity<Post> response = restTemplate.getForEntity(URI.create(url), Post.class);
         HttpStatusCode status = response.getStatusCode();
         System.out.println("status : " + status);
         HttpHeaders headers = response.getHeaders(); // 응답 헤더
